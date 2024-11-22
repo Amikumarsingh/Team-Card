@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes full height */
+        }
+        .team-member {
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+            height: 350px; /* Increased height of the card */
+        }
+        .team-member:hover {
+            transform: scale(1.05); /* Scale up the card on hover */
+        }
+        footer {
+            margin-top: auto; /* Push footer to the bottom */
+            background-color: #2d3748; /* Darker background for footer */
+            color: white; /* White text for contrast */
+            text-align: center; /* Centered text */
+            padding: 20px; /* Padding for spacing */
+            font-size: 1.2em; /* Increased font size */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="text/babel">
+        // TeamMember component to display individual team member details
+        function TeamMember({ name, role, imgSrc, linkedin, github }) {
+            return (
+                <div className="bg-white rounded-lg shadow-lg p-6 text-center team-member">
+                    <img src={imgSrc} alt={`Portrait of ${name}, ${role}`} className="w-24 h-24 rounded-full mx-auto mb-4" />
+                    <h2 className="text-xl font-semibold">{name}</h2>
+                    <p className="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p className="font-semibold text-gray-800 mb-4">{role}</p>
+                    <div className="flex justify-center space-x-4">
+                        <a href={linkedin} className="text-gray-600"><i className="fab fa-linkedin"></i></a>
+                        <a href={github} className="text-gray-600"><i className="fab fa-github"></i></a>
+                        <a href="#" className="text-gray-600"><i className="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            );
+        }
+
+        // App component to render the team section
+        function App() {
+            return (
+                <div className="flex flex-col items-center py-10">
+                    <h1 className="text-3xl font-bold text-orange-600 mb-8">Meet Our Team</h1>
+                    <div className="flex justify-center space-x-6 px-4">
+                        <TeamMember name="Alex Smith" role="Creative Leader" imgSrc="images/img 1.jpeg" linkedin="https://www.linkedin.com/in/alexsmith" github="https://github.com/alexsmith" />
+                        <TeamMember name="May Brown" role="Sales Manager" imgSrc="images/img 2.jpeg" linkedin="https://www.linkedin.com/in/maybrown" github="https://github.com/maybrown" />
+                        <TeamMember name="Ann Richmond" role="Web Developer" imgSrc="images/img 3.avif" linkedin="https://www.linkedin.com/in/annrichmond" github="https://github.com/annrichmond" />
+                        <TeamMember name="Roxie Swanson" role="Web Designer" imgSrc="images/img 4.avif" linkedin="https://www.linkedin.com/in/roxieswanson" github="https://github.com/roxieswanson" />
+                    </div>
+                    <p className="text-gray-600 mt-8">
+                        {/* <a href="#" className="text-blue-500">Freepik</a> */}
+                    </p>
+                </div>
+            );
+        }
+
+        // Render the App component into the DOM
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <footer>
+        <p>Designed by Amit...</p>
+    </footer>
+</body>
+</html>
